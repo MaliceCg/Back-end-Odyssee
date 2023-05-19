@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 mongoose 
     .connect(
        
-        "mongodb://odyDB:af917524d5ddf1cd9b48fa1ffebc96d2@dokku-mongo-odyDB:27017/odyDB",
+        "mongodb+srv://" + process.env.PASS + "@cluster0.iclbrtp.mongodb.net/test",
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,

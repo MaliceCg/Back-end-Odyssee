@@ -23,7 +23,7 @@ router.get('/idme',authMiddleware.verifyToken, async(req,res) => {
     res.status(200).json(req.user._id);
 });
 
-router.put('/password', authControllers.changePassword);
+
 
 
 //postupload//

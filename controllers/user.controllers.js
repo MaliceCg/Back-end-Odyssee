@@ -29,6 +29,7 @@ module.exports.updateUser = async( req,res) => {
         return res.status(500).json({message: err});
     }
 };
+
 ///////////////SUPPRIMER UTILISATEUR///////////////////////
 module.exports.deleteUser = async(req,res)=> {
     if (!ObjectID.isValid(req.params.id))

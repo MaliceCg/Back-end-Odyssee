@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const expControllers = require('../controllers/exp.controllers.js');
-const authMiddleware = require('../middlewares/auth.middleware');
+const authMiddleware = require('../middleware/auth.middleware');
 
 //creer une expérience
 router.post('/create',authMiddleware.verifyTokenAdmin, expControllers.createExp);

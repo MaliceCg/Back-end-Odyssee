@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const guideController = require('../controllers/guide.controllers');
-const authMiddleware = require('../middlewares/auth.middleware');
+const authMiddleware = require('../middleware/auth.middleware');
 
 // Créer un guide
 router.post('/create', authMiddleware.verifyTokenAdmin, guideController.createGuide);

@@ -55,3 +55,28 @@ try {
 }
 
 }
+
+module.exports.verifyTokenAdmin = async(req, res, next) => {
+  try {
+      const token = req.headers.authorization.split(' ')[1];
+      const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+      console.log(decodedToken,decodedToken.user._id);
+  
+      const userId = decodedToken.user._id;
+
+
+      if (userId!="6467a3d6adbf2d004b01bf37") {
+          throw new Error();
+      }
+      req.user = user;
+      req.token = token;
+      console.log(req.user, req.token);
+      next();
+  } catch(e) {
+      res.status(401).json({
+         'Invalid request!' : e
+      });
+      console.log(e);
+  }
+  
+  }

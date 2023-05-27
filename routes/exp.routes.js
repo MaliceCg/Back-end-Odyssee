@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const expControllers = require('../controllers/exp.controllers.js');
+const authMiddleware = require('../middlewares/auth.middleware');
 
 //creer une expérience
-router.post('/create', expControllers.createExp);
+router.post('/create',authMiddleware.verifyTokenAdmin, expControllers.createExp);
 // Mettre à jour une expérience
 router.put('/:id', expControllers.updateExp);
 // Supprimer une expérience

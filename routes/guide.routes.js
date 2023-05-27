@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const guideController = require('../controllers/guide.controllers');
+const authMiddleware = require('../middlewares/auth.middleware');
 
 // Créer un guide
-router.post('/create', guideController.createGuide);
+router.post('/create', authMiddleware.verifyTokenAdmin, guideController.createGuide);
 
 // Récupérer tous les guides
 router.get('/', guideController.getAllGuides);
@@ -12,9 +13,9 @@ router.get('/', guideController.getAllGuides);
 router.get('/:id', guideController.getGuideById);
 
 // Mettre à jour un guide
-router.put('/:id', guideController.updateGuide);
+router.put('/:id', authMiddleware.verifyTokenAdmin, guideController.updateGuide);
 
 // Supprimer un guide
-router.delete('/:id', guideController.deleteGuide);
+router.delete('/:id', authMiddleware.verifyTokenAdmin, guideController.deleteGuide);
 
 module.exports = router;
